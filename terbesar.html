@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilangan Terbesar</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        input { margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Mencari Bilangan Terbesar</h1>
+    <input type="text" id="numbers" placeholder="Masukkan bilangan positif (pisahkan dengan spasi)">
+    <button onclick="findLargest()">Cari</button>
+    <p id="result"></p>
+
+    <script>
+        function findLargest() {
+            const input = document.getElementById('numbers').value;
+            const numbers = input.split(' ').map(Number);
+            const largest = Math.max(...numbers);
+            document.getElementById('result').innerText = `Bilangan terbesar adalah: ${largest}`;
+        }
+    </script>
+</body>
+</html>

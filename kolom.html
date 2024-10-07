@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mencari Karakter Terbanyak</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mencari Karakter Terbanyak</h1>
+        <div id="inputArea">
+            <input type="text" id="inputString1" placeholder="Urutan 1" required>
+            <input type="text" id="inputString2" placeholder="Urutan 2" required>
+            <input type="text" id="inputString3" placeholder="Urutan 3" required>
+            <input type="text" id="inputString4" placeholder="Urutan 4" required>
+            <input type="text" id="inputString5" placeholder="Urutan 5" required>
+            <button onclick="storeStrings()">Simpan Urutan</button>
+        </div>
+        <div id="searchArea" style="display: none;">
+            <input type="text" id="searchChar" placeholder="Karakter yang dicari" required>
+            <button onclick="findMaxCount()">Cari Karakter</button>
+        </div>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        let strings = [];
+
+        function storeStrings() {
+            strings.push(
+                document.getElementById('inputString1').value,
+                document.getElementById('inputString2').value,
+                document.getElementById('inputString3').value,
+                document.getElementById('inputString4').value,
+                document.getElementById('inputString5').value
+            );
+
+            document.getElementById('inputArea').style.display = 'none';
+            document.getElementById('searchArea').style.display = 'block';
+        }
+
+        function findMaxCount() {
+            const char = document.getElementById('searchChar').value;
+            let maxCount = 0;
+
+            for (const str of strings) {
+                const count = [...str].filter(c => c === char).length;
+                if (count > maxCount) {
+                    maxCount = count;
+                }
+            }
+
+            document.getElementById('result').innerText = `Karakter '${char}' muncul maksimal ${maxCount} kali.`;
+        }
+    </script>
+</body>
+</html>
